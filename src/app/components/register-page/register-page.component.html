@@ -1,3 +1,39 @@
-<p>
-  register-page works!
-</p>
+<div class="jumbotron">
+  <form role="form" name="registerForm" [formGroup]="registerForm" (onSubmit)="register()">
+    <div class="form-group row">
+      <mat-form-field class="col-md-6">
+        <input matInput placeholder="Name" required [(ngModel)]="user.name" [formControl]="nameFormControl">
+      </mat-form-field>
+      <div class="col-md-6">
+        <div *ngFor="let validation of validationMessages.name" class="alert-container">
+          <div class="alert alert-danger" *ngIf="isValid('name', validation)">{{validation.message}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <mat-form-field class="col-md-6">
+        <input matInput placeholder="Surname" required [(ngModel)]="user.surname" [formControl]="surnameFormControl">
+      </mat-form-field>
+      <div class="col-md-6">
+        <div *ngFor="let validation of validationMessages.surname" class="alert-container">
+          <div class="alert alert-danger" *ngIf="isValid('surname', validation)">{{validation.message}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <mat-form-field class="col-md-6">
+        <input matInput placeholder="Age" [(ngModel)]="user.age" required [formControl]="ageFormControl">
+      </mat-form-field>
+      <div class="col-md-6">
+        <div *ngFor="let validation of validationMessages.age" class="alert-container">
+          <div class="alert alert-danger" *ngIf="isValid('age', validation)">{{validation.message}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-success text-center" *ngIf="registerForm.status === 'VALID'">Hello {{user.name}} {{user.surname}}!</div>
+    <button mat-raised-button color="primary" class="submit-button col-md-3" [disabled]="registerForm.status !== 'VALID'">
+      SAVE
+    </button>
+  </form>
+</div>
