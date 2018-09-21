@@ -1,3 +1,27 @@
-<p>
-  header works!
-</p>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <h1 routerLink="">SPA</h1>
+
+    <div class="d-flex flex-row-reverse">
+      <div class="d-none d-md-block">
+        <nav class="nav">
+          <li class="nav-item" *ngFor="let link of links">
+            <a class="nav-link link" [class.active]="link.isActive" [routerLink]="link.name">{{ link.name }}</a>
+          </li>
+        </nav>
+      </div>
+
+      <div class="d-md-none d-lg-none d-xl-none">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item *ngFor="let link of links" [routerLink]="link.name" class="link" [class.active]="link.isActive">
+            {{ link.name }}
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+
+  </mat-toolbar-row>
+</mat-toolbar>

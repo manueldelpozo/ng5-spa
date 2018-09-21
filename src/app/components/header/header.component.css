@@ -1,0 +1,23 @@
+.d-flex {
+    flex: 1;
+}
+
+h1:hover {
+    cursor: pointer
+}
+
+.link:first-letter {
+    text-transform:capitalize;
+}
+
+.link:hover, .link.active {
+    color: #ffffff;
+}
+
+.link[mat-menu-item]:hover, .link[mat-menu-item].active {
+    color: #1159df;
+}
+
+button[mat-icon-button], .link[mat-menu-item] {
+    outline: none;
+}

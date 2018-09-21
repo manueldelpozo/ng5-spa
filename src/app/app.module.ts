@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatToolbarModule, MatMenuModule } from '@angular/material';
+import { MatIconModule, MatButtonModule, MatToolbarModule, MatMenuModule } from '@angular/material';
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -9,6 +10,20 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { RegisterPageComponent } from './components/register-page/register-page.component';
 import { AccessPageComponent } from './components/access-page/access-page.component';
 
+const appRoutes: Routes = [
+  {
+    path: '',
+    component: HomePageComponent
+  },
+  {
+    path: 'register',
+    component: RegisterPageComponent
+  },
+  {
+    path: 'access',
+    component: AccessPageComponent
+  }
+];
 
 @NgModule({
   declarations: [
@@ -21,7 +36,8 @@ import { AccessPageComponent } from './components/access-page/access-page.compon
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatButtonModule, MatToolbarModule, MatMenuModule
+    MatIconModule, MatButtonModule, MatToolbarModule, MatMenuModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
