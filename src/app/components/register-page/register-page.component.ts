@@ -14,7 +14,7 @@ export class RegisterPageComponent implements OnInit {
   user = new User();
   nameFormControl = new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z_ ]+$/)]);
   surnameFormControl = new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z_ ]+$/)]);
-  ageFormControl = new FormControl('', [Validators.required, Validators.pattern(/^[1-9][0-9]?$|^150$/)]);
+  ageFormControl = new FormControl('', [Validators.required, Validators.pattern(/^[1-9][0-9]?$|^99$/)]);
   validationMessages = {
     'name': [
       { type: 'required', message: 'Name is required' },
@@ -26,7 +26,7 @@ export class RegisterPageComponent implements OnInit {
     ],
     'age': [
       { type: 'required', message: 'Age is required' },
-      { type: 'pattern', message: 'Your age must contain only numbers under 150' }
+      { type: 'pattern', message: 'Your age must contain only numbers under 100' }
     ]
   };
 
@@ -44,7 +44,7 @@ export class RegisterPageComponent implements OnInit {
 
   isValid(field: string, validation: any): boolean {
     return this.registerForm.get(field).hasError(validation.type)
-            && (this.registerForm.get(field).dirty || this.registerForm.get(field).touched);
+      && (this.registerForm.get(field).dirty || this.registerForm.get(field).touched);
   }
 
   register() {

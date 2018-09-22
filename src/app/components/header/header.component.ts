@@ -7,10 +7,15 @@ import { Link } from '../../models/link';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+
 export class HeaderComponent {
   links: Link[];
 
   constructor(private router: Router) {
+    this.updateLinks();
+  }
+
+  public updateLinks() {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.links = this.router.config.filter(route => route.path).map(route => {

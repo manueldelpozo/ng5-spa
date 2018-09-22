@@ -1,10 +1,10 @@
-.jumbotron {
-    height: 100vh;
-    margin: 0;
+:host {
+    text-align: center;
 }
 
-.main-container > * {
+:host > * {
     margin-bottom: 2em;
+    text-align: center;
 }
 
 #imgContainer {
