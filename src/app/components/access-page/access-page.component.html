@@ -1,3 +1,16 @@
-<p>
-  access-page works!
-</p>
+<div class="jumbotron text-center main-container">
+  <div class="card text-white" [class.bg-success]="user.name" [class.bg-warning]="!user.name">
+    <div class="card-body" *ngIf="user.name;else disableAccess">{{user.name}} {{user.surname}}'s Page</div>
+    <ng-template #disableAccess>
+        <div class="card-body">Please <a [routerLink]="['../register']">Register</a></div>
+    </ng-template>
+  </div>
+  
+  <button mat-raised-button color="primary" class="col-md-3" (click)="checkAllowance()" [disabled]="!user.name">
+    ACCESS
+  </button>
+
+  <div id="imgContainer" [style.background-image]='photo'>
+    <div *ngIf="!isAllowedAccess" class="alert alert-danger text-center">You must be at least <strong>18 years old</strong>!</div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <form role="form" name="registerForm" [formGroup]="registerForm" (onSubmit)="register()">
+  <form role="form" name="registerForm" [formGroup]="registerForm" (ngSubmit)="register()">
     <div class="form-group row">
       <mat-form-field class="col-md-6">
         <input matInput placeholder="Name" required [(ngModel)]="user.name" [formControl]="nameFormControl">
@@ -32,6 +32,7 @@
     </div>
 
     <div class="alert alert-success text-center" *ngIf="registerForm.status === 'VALID'">Hello {{user.name}} {{user.surname}}!</div>
+    
     <button mat-raised-button color="primary" class="submit-button col-md-3" [disabled]="registerForm.status !== 'VALID'">
       SAVE
     </button>

@@ -1,0 +1,28 @@
+.jumbotron {
+    height: 100vh;
+    margin: 0;
+}
+
+.main-container > * {
+    margin-bottom: 2em;
+}
+
+#imgContainer {
+    height: 500px;
+    max-width: 500px;
+    margin: 0 auto;
+    background-position: center;
+    background-color: #ccc; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 2em;
+    border: 2px dotted;
+
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+#imgContainer .alert {
+    margin: 0 auto;
+}

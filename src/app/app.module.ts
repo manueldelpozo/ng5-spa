@@ -10,6 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { RegisterPageComponent } from './components/register-page/register-page.component';
 import { AccessPageComponent } from './components/access-page/access-page.component';
+import { UserDataService } from './services/user-data.service';
 
 const appRoutes: Routes = [
   {
@@ -41,7 +42,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule, FormsModule
   ],
-  providers: [],
+  providers: [UserDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

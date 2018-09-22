@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from '../../models/user';
+import { UserDataService } from '../../services/user-data.service';
 
 @Component({
   selector: 'app-register-page',
@@ -8,7 +10,7 @@ import { User } from '../../models/user';
   styleUrls: ['./register-page.component.css']
 })
 
-export class RegisterPageComponent {
+export class RegisterPageComponent implements OnInit {
   user = new User();
   nameFormControl = new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z_ ]+$/)]);
   surnameFormControl = new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z_ ]+$/)]);
@@ -34,14 +36,19 @@ export class RegisterPageComponent {
     age: this.ageFormControl
   });
 
-  constructor() { }
+  constructor(private userDataService: UserDataService, private router: Router) { }
 
-  isValid(field, validation): boolean {
+  ngOnInit() {
+    this.userDataService.currentUser.subscribe(user => this.user = user);
+  }
+
+  isValid(field: string, validation: any): boolean {
     return this.registerForm.get(field).hasError(validation.type)
             && (this.registerForm.get(field).dirty || this.registerForm.get(field).touched);
   }
 
   register() {
-    // do
+    this.userDataService.changeUser(this.user);
+    this.router.navigate(['/access']);
   }
 }

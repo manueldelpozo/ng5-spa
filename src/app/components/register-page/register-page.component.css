@@ -1,3 +1,8 @@
+.jumbotron {
+    height: 100vh;
+    margin: 0;
+}
+
 .alert-danger {
     margin: 0;
 }
